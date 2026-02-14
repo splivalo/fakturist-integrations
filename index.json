@@ -1,0 +1,29 @@
+{
+  "version": 1,
+  "portals": [
+    {
+      "id": "hetzner",
+      "displayName": "Hetzner",
+      "category": "cat_infrastructure",
+      "syncType": "hybrid",
+      "status": "active",
+      "file": "portals/hetzner.json"
+    },
+    {
+      "id": "fastcomet",
+      "displayName": "FastComet",
+      "category": "cat_infrastructure",
+      "syncType": "hybrid",
+      "status": "active",
+      "file": "portals/fastcomet.json"
+    },
+    {
+      "id": "mailerlite",
+      "displayName": "MailerLite",
+      "category": "cat_email_marketing",
+      "syncType": "hybrid",
+      "status": "beta",
+      "file": "portals/mailerlite.json"
+    }
+  ]
+}
