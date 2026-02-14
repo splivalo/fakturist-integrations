@@ -31,56 +31,47 @@
       "steps": [
         {
           "action": "navigate",
-          "value": "https://app.mailerlite.com/billing",
-          "smartMode": false
+          "value": "https://app.mailerlite.com/billing"
         },
         {
           "action": "type",
           "value": "{username}",
-          "selector": "input[type=email]",
-          "smartMode": false
+          "selector": "input[type=email]"
         },
         {
           "action": "type",
           "value": "{password}",
-          "selector": "input[type=password]",
-          "smartMode": false
+          "selector": "input[type=password]"
         },
         {
           "action": "click",
           "value": "submit",
-          "selector": "button[type=submit]",
-          "smartMode": false
+          "selector": "button[type=submit]"
         },
         {
           "action": "navigate",
-          "value": "https://dashboard.mailerlite.com/billing/invoices",
-          "smartMode": false
+          "value": "https://dashboard.mailerlite.com/billing/invoices"
         },
         {
           "action": "wait",
-          "value": "1500",
-          "smartMode": true
+          "value": "1500"
         },
         {
           "action": "download",
           "value": "",
           "selector": "a[data-test-id=\"download-invoice\"]",
-          "row_selector": "tr[data-test-id=\"invoice-row\"]",
-          "is_row_action": true,
-          "max_pages": 1,
-          "is_group_start": true,
-          "smartMode": false
+          "rowSelector": "tr[data-test-id=\"invoice-row\"]",
+          "isRowAction": true,
+          "maxPages": 1,
+          "isGroupStart": true
         }
       ],
       "extract_config": {
         "invoice_date": {
-          "selector": "td:nth-child(1)",
-          "smart_mode": false
+          "selector": "td:nth-child(1)"
         },
         "amount": {
-          "selector": "td:nth-child(5)",
-          "smart_mode": false
+          "selector": "td:nth-child(5)"
         }
       }
     }
