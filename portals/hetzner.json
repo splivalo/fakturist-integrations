@@ -1,0 +1,98 @@
+{
+  "id": "hetzner",
+  "displayName": "Hetzner",
+  "category": "cat_infrastructure",
+  "syncType": "hybrid",
+  "status": "active",
+  "configSchema": {
+    "fields": [
+      {
+        "key": "email",
+        "labelKey": "email",
+        "placeholderKey": "emailPlaceholderExample",
+        "type": "email",
+        "required": true
+      },
+      {
+        "key": "password",
+        "labelKey": "password",
+        "placeholderKey": "passwordPlaceholder",
+        "type": "password",
+        "required": true
+      }
+    ],
+    "email_sync": {
+      "from_email": "billing@hetzner.com",
+      "subject_pattern": ".*Invoice.*",
+      "match_type": "contains",
+      "search_text": "Invoice"
+    },
+    "manual_sync": {
+      "steps": [
+        {
+          "action": "navigate",
+          "value": "https://accounts.hetzner.com/login",
+          "smartMode": false
+        },
+        {
+          "action": "type",
+          "value": "{email}",
+          "selector": "input[type=\"text\"]",
+          "smartMode": false
+        },
+        {
+          "action": "type",
+          "value": "{password}",
+          "selector": "input[type=\"password\"]",
+          "smartMode": false
+        },
+        {
+          "action": "click",
+          "value": "submit",
+          "selector": "input[type=\"submit\"]",
+          "smartMode": false
+        },
+        {
+          "action": "wait",
+          "value": "2000",
+          "smartMode": true
+        },
+        {
+          "action": "navigate",
+          "value": "https://accounts.hetzner.com/invoice",
+          "smartMode": false
+        },
+        {
+          "action": "download",
+          "value": "",
+          "selector": "a[href$='pdf']",
+          "row_selector": ".invoice-container .invoice-list li",
+          "is_row_action": true,
+          "max_pages": 5,
+          "is_group_start": true,
+          "smartMode": false
+        }
+      ],
+      "extract_config": {
+        "invoice_number": {
+          "selector": "span.invoice-number",
+          "smart_mode": false
+        },
+        "invoice_date": {
+          "selector": "span.invoice-date",
+          "smart_mode": false
+        },
+        "amount": {
+          "selector": "span.invoice-value",
+          "smart_mode": false
+        }
+      }
+    }
+  },
+  "uiMetadata": {
+    "icon": "dns",
+    "color": "#D50C2D",
+    "website": "https://www.hetzner.com"
+  },
+  "scraperModule": "hetzner_scraper"
+}
