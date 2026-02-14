@@ -31,60 +31,50 @@
       "steps": [
         {
           "action": "navigate",
-          "value": "https://accounts.hetzner.com/login",
-          "smartMode": false
+          "value": "https://accounts.hetzner.com/login"
         },
         {
           "action": "type",
           "value": "{email}",
-          "selector": "input[type=\"text\"]",
-          "smartMode": false
+          "selector": "input[type=\"text\"]"
         },
         {
           "action": "type",
           "value": "{password}",
-          "selector": "input[type=\"password\"]",
-          "smartMode": false
+          "selector": "input[type=\"password\"]"
         },
         {
           "action": "click",
           "value": "submit",
-          "selector": "input[type=\"submit\"]",
-          "smartMode": false
+          "selector": "input[type=\"submit\"]"
         },
         {
           "action": "wait",
-          "value": "2000",
-          "smartMode": true
+          "value": "2000"
         },
         {
           "action": "navigate",
-          "value": "https://accounts.hetzner.com/invoice",
-          "smartMode": false
+          "value": "https://accounts.hetzner.com/invoice"
         },
         {
           "action": "download",
           "value": "",
           "selector": "a[href$='pdf']",
-          "row_selector": ".invoice-container .invoice-list li",
-          "is_row_action": true,
-          "max_pages": 5,
-          "is_group_start": true,
-          "smartMode": false
+          "rowSelector": ".invoice-container .invoice-list li",
+          "isRowAction": true,
+          "maxPages": 5,
+          "isGroupStart": true
         }
       ],
       "extract_config": {
         "invoice_number": {
-          "selector": "span.invoice-number",
-          "smart_mode": false
+          "selector": "span.invoice-number"
         },
         "invoice_date": {
-          "selector": "span.invoice-date",
-          "smart_mode": false
+          "selector": "span.invoice-date"
         },
         "amount": {
-          "selector": "span.invoice-value",
-          "smart_mode": false
+          "selector": "span.invoice-value"
         }
       }
     }
