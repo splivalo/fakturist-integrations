@@ -1,0 +1,94 @@
+{
+  "id": "mailerlite",
+  "displayName": "MailerLite",
+  "category": "cat_email_marketing",
+  "syncType": "hybrid",
+  "status": "beta",
+  "configSchema": {
+    "fields": [
+      {
+        "key": "username",
+        "labelKey": "email",
+        "placeholderKey": "emailPlaceholderExample",
+        "type": "email",
+        "required": true
+      },
+      {
+        "key": "password",
+        "labelKey": "password",
+        "placeholderKey": "passwordPlaceholder",
+        "type": "password",
+        "required": true
+      }
+    ],
+    "email_sync": {
+      "from_email": "notifications@mailerlite.com",
+      "subject_pattern": ".*payment.*",
+      "match_type": "contains",
+      "search_text": "payment"
+    },
+    "manual_sync": {
+      "steps": [
+        {
+          "action": "navigate",
+          "value": "https://app.mailerlite.com/billing",
+          "smartMode": false
+        },
+        {
+          "action": "type",
+          "value": "{username}",
+          "selector": "input[type=email]",
+          "smartMode": false
+        },
+        {
+          "action": "type",
+          "value": "{password}",
+          "selector": "input[type=password]",
+          "smartMode": false
+        },
+        {
+          "action": "click",
+          "value": "submit",
+          "selector": "button[type=submit]",
+          "smartMode": false
+        },
+        {
+          "action": "navigate",
+          "value": "https://dashboard.mailerlite.com/billing/invoices",
+          "smartMode": false
+        },
+        {
+          "action": "wait",
+          "value": "1500",
+          "smartMode": true
+        },
+        {
+          "action": "download",
+          "value": "",
+          "selector": "a[data-test-id=\"download-invoice\"]",
+          "row_selector": "tr[data-test-id=\"invoice-row\"]",
+          "is_row_action": true,
+          "max_pages": 1,
+          "is_group_start": true,
+          "smartMode": false
+        }
+      ],
+      "extract_config": {
+        "invoice_date": {
+          "selector": "td:nth-child(1)",
+          "smart_mode": false
+        },
+        "amount": {
+          "selector": "td:nth-child(5)",
+          "smart_mode": false
+        }
+      }
+    }
+  },
+  "uiMetadata": {
+    "icon": "send",
+    "color": "#0066CC",
+    "website": ""
+  },
+  "scraperModule": "mailerlite_scraper"
+}
