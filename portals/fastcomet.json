@@ -1,0 +1,120 @@
+{
+  "id": "fastcomet",
+  "displayName": "FastComet",
+  "category": "cat_infrastructure",
+  "syncType": "hybrid",
+  "status": "active",
+  "configSchema": {
+    "fields": [
+      {
+        "key": "email",
+        "labelKey": "email",
+        "placeholderKey": "emailPlaceholderExample",
+        "type": "email",
+        "required": true
+      },
+      {
+        "key": "password",
+        "labelKey": "password",
+        "placeholderKey": "passwordPlaceholder",
+        "type": "password",
+        "required": true
+      }
+    ],
+    "email_sync": {
+      "from_email": "support@fastcomet.com",
+      "subject_pattern": ".*Invoice.*",
+      "match_type": "contains",
+      "search_text": "Invoice"
+    },
+    "manual_sync": {
+      "steps": [
+        {
+          "action": "navigate",
+          "value": "https://cloud.fastcomet.com/login",
+          "smartMode": false
+        },
+        {
+          "action": "type",
+          "value": "{username}",
+          "selector": "input[autocomplete=\"email\"]",
+          "smartMode": false
+        },
+        {
+          "action": "type",
+          "value": "{password}",
+          "selector": "input[type=\"password\"]",
+          "smartMode": false
+        },
+        {
+          "action": "click",
+          "value": "submit",
+          "selector": "button[type=\"submit\"]",
+          "smartMode": false
+        },
+        {
+          "action": "wait",
+          "value": "2000",
+          "smartMode": true
+        },
+        {
+          "action": "navigate",
+          "value": "https://cloud.fastcomet.com/billing/invoices",
+          "smartMode": false
+        },
+        {
+          "action": "wait",
+          "value": "2000",
+          "smartMode": true
+        },
+        {
+          "action": "click",
+          "value": "submit",
+          "selector": "button[aria-haspopup=\"menu\"]",
+          "row_selector": "table tbody tr:has(button[aria-haspopup='menu'])",
+          "is_row_action": true,
+          "max_pages": 1,
+          "is_group_start": true,
+          "smartMode": false
+        },
+        {
+          "action": "wait",
+          "value": "500",
+          "row_selector": "table tbody tr:has(button[aria-haspopup='menu'])",
+          "is_row_action": true,
+          "max_pages": 1,
+          "smartMode": true
+        },
+        {
+          "action": "download",
+          "value": "",
+          "selector": "text=Download",
+          "row_selector": "table tbody tr:has(button[aria-haspopup='menu'])",
+          "is_row_action": true,
+          "max_pages": 1,
+          "smartMode": false
+        }
+      ],
+      "extract_config": {
+        "invoice_number": {
+          "selector": "td:nth-child(1)",
+          "smart_mode": false
+        },
+        "invoice_date": {
+          "selector": "td:nth-child(2)",
+          "smart_mode": false
+        },
+        "amount": {
+          "selector": "td:nth-child(3)",
+          "smart_mode": false
+        }
+      }
+    }
+  },
+  "uiMetadata": {
+    "icon": "dns",
+    "color": "#FF6C2C",
+    "website": "https://www.fastcomet.com"
+  },
+  "scraperModule": "fastcomet"
+}
