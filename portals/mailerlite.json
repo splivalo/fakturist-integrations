@@ -3,7 +3,7 @@
   "displayName": "MailerLite",
   "category": "cat_email_marketing",
   "syncType": "hybrid",
-  "status": "beta",
+  "status": "active",
   "configSchema": {
     "fields": [
       {
