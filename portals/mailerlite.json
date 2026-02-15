@@ -3,7 +3,7 @@
   "displayName": "MailerLite",
   "category": "cat_email_marketing",
   "syncType": "hybrid",
-  "status": "active",
+  "status": "beta",
   "configSchema": {
     "fields": [
       {
@@ -31,7 +31,7 @@
       "steps": [
         {
           "action": "navigate",
-          "value": "https://app.mailerlite.com/billing"
+          "value": "https://accounts.mailerlite.com/"
         },
         {
           "action": "type",
@@ -54,7 +54,7 @@
         },
         {
           "action": "wait",
-          "value": "1500"
+          "value": "1700"
         },
         {
           "action": "download",
